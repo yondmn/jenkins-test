@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import {  Route, Link } from 'react-router-dom';
-import logo from './logo.svg';
-import './App.css';
-// import Test from './pages/Test';
-// import Clock from './pages/Test/clock';
-// import Yform from './pages/Form';
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import './App.less';
 import Calctor from './pages/Calctor';
 import FilterableProductTable from './pages/FilterableProductTable';
+import Test from './pages/Test';
+import Tags from './pages/Tags';
 
 class App extends Component {
   constructor(props) {
@@ -15,6 +13,7 @@ class App extends Component {
       isLoggin: false
     };
     this.handleTestClick = this.handleTestClick.bind(this)
+    this.toTags = this.toTags.bind(this)
   }
   
   handleTestClick() {
@@ -24,23 +23,30 @@ class App extends Component {
     }))
   }
 
+  toTags() {
+    console.log(this)
+  }
+
   render() {
     return (
-      <div id="en" data-hh="hhhh" className="App">
-        <header className="App-header">
-        <nav className="nav">
-          <ul>
-            <li>Home</li>
-            <li>Tags</li>
-            <li>About</li>
-          </ul>
-        </nav>
-        </header>
-        <main className="App-main">
-          <Calctor>{(s) => <i>{s}</i>}</Calctor>
-          <FilterableProductTable />
-        </main>
-      </div>
+      <Router>
+        <div id="en" data-hh="hhhh" className="App">
+          <header className="App-header">
+          <nav className="nav">
+            <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><a onClick={this.toTags}>Tags</a></li>
+              <li><Link to="/about">About</Link></li>
+            </ul>
+          </nav>
+          </header>
+          <main className="App-main">
+            <Route path="/about" component={ Test }></Route>
+            <Calctor>{(s) => <i>{s}</i>}</Calctor>
+            <FilterableProductTable />
+          </main>
+        </div>
+      </Router>
     );
   }
 }

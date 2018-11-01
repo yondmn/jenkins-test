@@ -12,12 +12,23 @@ const Kkk = (props) => {
 
 // 等同于上面的方式
 class Test extends React.Component {
+    constructor(props) {
+        super(props);
+        // isExact: true
+        // params: {}
+        // path: "/about"
+        // url: "/about"
+        console.log(this.props.match)
+    }
     render () {
         const arr = [11, 22, 33, 44, 55];
-        return (<div>
+        const { match } = this.props;
+        return (
+        <div>
             <Kkk arr={ arr }/>
             <p>test: {this.props.name || 'shabi'}</p>
             <p>{ this.props.isLoggin ? 'logined' : 'go to login' }</p>
+            <p>sb: <strong>{ match.params.sb }</strong></p>
         </div>);
     }
 }

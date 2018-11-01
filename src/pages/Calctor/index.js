@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TemperatureInput from './TemperatureInput';
 import { toC, toF } from '../../utils';
+import '../../styles/Calctor/index.less'
 
 const tryConvert = (temperature, convert) => {
     const input = parseFloat(temperature);
