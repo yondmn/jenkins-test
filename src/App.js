@@ -17,7 +17,7 @@ class App extends Component {
   }
   
   handleTestClick() {
-    console.log('testeste', this.state.isLoggin);
+    console.log('testestea', this.state.isLoggin);
     this.setState((preState) => ({
       isLoggin: !preState.isLoggin
     }))
