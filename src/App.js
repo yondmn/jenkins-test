@@ -25,6 +25,8 @@ class App extends Component {
 
   toTags() {
     console.log(this)
+    console.log(this)
+    console.log(this)
   }
 
   render() {
